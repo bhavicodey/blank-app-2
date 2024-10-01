@@ -6,10 +6,18 @@ from streamlit_folium import st_folium
 import geemap.foliumap as geemap
 from io import StringIO
 
-service_account = 'streamlit-project13@so2proj.iam.gserviceaccount.com'
-credentials = ee.ServiceAccountCredentials(service_account, './so2proj-661ed808ab01.json')
+
+service_account = 'so2project@so2proj.iam.gserviceaccount.com'
+credentials = ee.ServiceAccountCredentials(service_account, './so2proj-afa9d673af99.json')
 ee.Initialize(credentials)
 
+# Function to send SMS
+def send_sms(to, message):
+    client.messages.create(
+        to=to,
+        from_=TWILIO_PHONE_NUMBER,
+        body=message
+    )
 
 # Function to get Sentinel-5P SO2 data
 def get_sentinel5p_so2(start_date, end_date, region):
