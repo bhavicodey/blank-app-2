@@ -5,5 +5,3 @@ streamlit_folium
 datetime
 pandas
 folium
-StringIO
-io
